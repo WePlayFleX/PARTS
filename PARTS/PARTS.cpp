@@ -62,42 +62,91 @@
 //	return 0;
 //}
 
+//#include <iostream>
+//
+//using namespace std;
+//
+//const int SIZE = 4;
+//
+//struct part
+//{
+//	int modelnumber;
+//	int partnumber;
+//	float cost;
+//};
+//
+//int main()
+//{
+//	part apart[SIZE];
+//
+//	for (size_t i = 0; i < SIZE; i++)
+//	{
+//		cout << endl;
+//		cout << "Enter model number: ";
+//		cin >> apart[i].modelnumber;
+//		cout << "Enter part number: ";
+//		cin >> apart[i].partnumber;
+//		cout << "Enter cost: ";
+//		cin >> apart[i].cost;
+//	}
+//
+//	cout << endl;
+//
+//	for (size_t i = 0; i < SIZE; i++)
+//	{
+//		cout << "Model " << apart[i].modelnumber;
+//		cout << " Part " << apart[i].partnumber;
+//		cout << " Cost " << apart[i].cost << endl;
+//	}
+//
+//	system("pause");
+//	return 0;
+//}
+
+
 #include <iostream>
+#include <cstring>
+
+#pragma warning(disable : 4996)
 
 using namespace std;
 
-const int SIZE = 4;
+const int SIZE = 30;
 
-struct part
+class Part
 {
-	int modelnumber;
-	int partnumber;
-	float cost;
+private:
+	char partName[SIZE];
+	int partNumber;
+	double cost;
+
+public:
+	void setpart(char pname[], int pn, double c)
+	{
+		strcpy(partName, pname);
+		partNumber = pn;
+		cost = c;
+	}
+
+	void showpart()
+	{
+		cout << "Name = " << partName;
+		cout << ", number = " << partNumber;
+		cout << ", cost = " << cost << "$" << endl;
+	}
 };
 
 int main()
 {
-	part apart[SIZE];
+	Part part1, part2;
 
-	for (size_t i = 0; i < SIZE; i++)
-	{
-		cout << endl;
-		cout << "Enter model number: ";
-		cin >> apart[i].modelnumber;
-		cout << "Enter part number: ";
-		cin >> apart[i].partnumber;
-		cout << "Enter cost: ";
-		cin >> apart[i].cost;
-	}
+	part1.setpart("Coupling", 473, 217.55);
+	part2.setpart("Vorotok", 9924, 419.25);
 
-	cout << endl;
-
-	for (size_t i = 0; i < SIZE; i++)
-	{
-		cout << "Model " << apart[i].modelnumber;
-		cout << " Part " << apart[i].partnumber;
-		cout << " Cost " << apart[i].cost << endl;
-	}
+	cout << "\nFirst detail: ";
+	part1.showpart();
+	cout << "\nSecond detail: ";
+	part2.showpart();
 
 	system("pause");
 	return 0;
